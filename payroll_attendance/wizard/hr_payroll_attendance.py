@@ -22,26 +22,26 @@ class PayrollAttendanceWizard(models.TransientModel):
         print("-------------------------------" )
         date_time = datetime.combine(self.date_from,datetime.min.time())
         att_payroll = self.env['payroll.attendance.line']
-
         hr_attendance_ids = self.env['hr.attendance'].search([('payroll_attendance_id', '=', False), ('check_in', '>=', date_time)])
-        while date_time <= datetime.today():
-            print("-=-=-=-=-=-=======GOOOOOOOOOOODDD==============")
-            # vals = self.prepare_payroll_attendance(rec)
-            date_time= date_time + timedelta(days=1)
         print("=====hr_attendance_ids=====", hr_attendance_ids)
-        # for rec in hr_attendance_ids:
-        #     print("=======================")
-        #     vals = self.prepare_payroll_attendance(rec)
-        #     print("vals=============", vals)
+        for rec in hr_attendance_ids:
+            print("===========rec====rec========", rec)
+            while date_time <= datetime.today():
+                print("=======GOOOOOOOOOOODDD========", date_time)
+                vals = self.prepare_payroll_attendance(rec,date_time)
+                date_time= date_time + timedelta(days=1)
+                print("vals=============", vals)
+                line = att_payroll.create(vals)
+            date_time = datetime.combine(self.date_from,datetime.min.time())
 
 
-    def prepare_payroll_attendance(self,rec):
+    def prepare_payroll_attendance(self,rec,date_time):
         self.get_status(rec)
         vals = {
                 'employee_id': rec.employee_id.id,
                 'shift_id': rec.employee_id.shift_id.id,
-                'day': rec.check_in.strftime('%A'),
-                'date': rec.check_in.date(),
+                'day': date_time.strftime('%A'),
+                'date': date_time,
                 # 'time_in': rec.check_in.time(),
                 # 'time_out': rec.check_out.time(),
                 # 'attendance_line_ids': rec.id,
