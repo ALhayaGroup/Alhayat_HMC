@@ -21,6 +21,7 @@ class PayrollAttendanceLine(models.Model):
     employee_id = fields.Many2one("hr.employee", string="Employee", required=True)
     shift_id = fields.Many2one("shift.shift", string="Shift")
     day = fields.Selection(WEEK_DAYS, string="Days")
+    date = fields.Date(string="Date")
     time_in = fields.Float(string="Time In")
     time_out = fields.Float(string="Time Out")
     work_time = fields.Float(string="Work time")
