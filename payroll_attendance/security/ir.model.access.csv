@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_shif_shift,access.shift.shift,model_shift_shift,,1,1,1,1
+access_hr_policy,access.hr.policy,model_hr_policy,,1,1,1,1
+access_hr_policy_line,access.hr.policy.line,model_hr_policy_line,,1,1,1,1
+access_payroll_attendance_line,access.payroll.attendance.line,model_payroll_attendance_line,,1,1,1,1
+access_payroll_attendance_wiz,access.payroll.attendance.wiz,model_payroll_attendance_wiz,,1,1,1,1
+
+
+
+

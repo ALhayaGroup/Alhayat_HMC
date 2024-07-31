@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menus -->
+
+
+    <!-- <record id="shift_shift_form" model="ir.ui.view">
+            <field name="name">shift.shift.form</field>
+            <field name="model">shift.shift</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="shift_name"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="shift_start" widget='float_time' />
+                                <field name="shift_end" widget='float_time' />
+                                <field name="shift_work_time" widget='float_time' />
+                            </group>
+                            <group>
+                                <field name="late_in" widget='float_time' />
+                                <field name="early_out" widget='float_time' />
+                                <field name="Over_time_start" widget='float_time' />
+                            </group>
+                        </group>
+                        <group string="Days">
+                            <group>
+                               <field name="sat"/>
+                               <field name="sun"/>
+                               <field name="mon"/>
+                               <field name="tue"/>
+                            </group>
+                            <group>
+                                <field name="wed"/>
+                                <field name="thur"/>
+                                <field name="fri"/>
+                           </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+ -->
+
+    <record id="payroll_attendance_line_view_tree" model="ir.ui.view">
+        <field name="name">hr.payroll.attendance.line.tree</field>
+        <field name="model">payroll.attendance.line</field>
+        <field name="arch" type="xml">
+            <tree multi_edit="1">
+                <header>
+                    <button name="create_payroll_attendance_line" string="Create Attendance Line" class="oe_highlight" type="object"/>
+                </header>
+                <field name="employee_id"/>
+                <field name="shift_id"/>
+               <!--  <field name="shift_start"/>
+                <field name="shift_end"/>
+                <field name="shift_work_time"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="payroll_attendance_line_action" model="ir.actions.act_window">
+        <field name="name">Payroll Attendance</field>
+        <field name="res_model">payroll.attendance.line</field>
+    </record>
+
+    <menuitem id="menu_payroll_attendance_line"
+              name="Payroll Attendance" parent="menu_hr_payroll_attendance"
+              action="payroll_attendance_line_action"
+              sequence="10"/>
+
+</odoo>

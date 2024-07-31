@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menus -->
+
+    <menuitem id="menu_hr_payroll_attendance"
+              name="Payroll Attendance" parent="om_hr_payroll.menu_hr_payroll_root"
+              sequence="90"/>
+
+
+    <record id="shift_shift_form" model="ir.ui.view">
+            <field name="name">shift.shift.form</field>
+            <field name="model">shift.shift</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="shift_name"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="shift_start" widget='float_time' />
+                                <field name="shift_end" widget='float_time' />
+                                <field name="shift_work_time" widget='float_time' />
+                            </group>
+                            <group>
+                                <field name="late_in" widget='float_time' />
+                                <field name="early_out" widget='float_time' />
+                                <field name="Over_time_start" widget='float_time' />
+                            </group>
+                        </group>
+                        <group string="Days">
+                            <group>
+                               <field name="sat"/>
+                               <field name="sun"/>
+                               <field name="mon"/>
+                               <field name="tue"/>
+                            </group>
+                            <group>
+                                <field name="wed"/>
+                                <field name="thur"/>
+                                <field name="fri"/>
+                           </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    <record id="hr_shift_shift_view_tree" model="ir.ui.view">
+        <field name="name">hr.shift.shift.tree</field>
+        <field name="model">shift.shift</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="shift_name"/>
+                <field name="shift_start"/>
+                <field name="shift_end"/>
+                <field name="shift_work_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_shift_shift_action" model="ir.actions.act_window">
+        <field name="name">Shift</field>
+        <field name="res_model">shift.shift</field>
+    </record>
+
+    <menuitem id="menu_hr_shift_shift"
+              name="Shift" parent="menu_hr_payroll_attendance"
+              action="hr_shift_shift_action"
+              sequence="1"/>
+
+</odoo>
