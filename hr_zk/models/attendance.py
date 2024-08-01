@@ -9,7 +9,7 @@ class Attendance_get_data(models.Model):
 
 
     Attendance_id=fields.Integer(string="id" , required=True)
-    emp_code = fields.Integer(string="code_attendance")
+    emp_code = fields.Integer(string="Attendance Code")
     punch_time = fields.Datetime(string="time")
     punch_state_display=fields.Char(string="status")
     upload_time = fields.Date(string="upload time")

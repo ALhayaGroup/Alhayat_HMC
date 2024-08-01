@@ -51,7 +51,7 @@ class Hr_Zk(models.Model):
         print(attendance)
         for item in attendance:
             
-            employees = self.env['hr.employee'].search([('code_employee', '=', item.emp_code)])
+            employees = self.env['hr.employee'].search([('pin', '=', item.emp_code)])
             if employees:
                 self.create_record(item)
 
@@ -61,7 +61,7 @@ class Hr_Zk(models.Model):
     
 
         if data.punch_state_display == 'Sign In':
-            employees = self.env['hr.employee'].search([('code_employee', '=', data.emp_code)])
+            employees = self.env['hr.employee'].search([('pin', '=', data.emp_code)])
             employee_count = employees.search_count([])
             
             # print("Employee count:", employee_count)
@@ -87,7 +87,7 @@ class Hr_Zk(models.Model):
                         vals = {
                             'id_api': int(data.Attendance_id),
                             'employee_id': emp.id,
-                            'code_employee': emp.code_employee,
+                            'pin': emp.code_employee,
                             'check_in': data.punch_time,
                             'date_day': data.punch_time.date(),
                         }
@@ -102,7 +102,7 @@ class Hr_Zk(models.Model):
 
         elif data.punch_state_display == 'Sign Out':
 
-            employees = self.env['hr.employee'].search([('code_employee', '=', data.emp_code)])
+            employees = self.env['hr.employee'].search([('pin', '=', data.emp_code)])
             for emp in employees:
                 if emp:
                     attendance = self.search([
