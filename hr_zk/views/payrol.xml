@@ -8,8 +8,25 @@
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_payslip_done']" position="after">
               <button string="compute attendace" name="attendance" type="object" modifiers="{'invisible': [('state', '!=', 'draft')]}" class="oe_highlight"/>
+
             </xpath>
         </field>
     </record>
+
+    <!-- <record id="inherit_view_id_inherit_module_name" model="ir.ui.view">
+        <field name="name">model.name.view.form.inherit</field>
+        <field name="model">model.name</field>
+        <field name="inherit_id" ref="inherit_module_name.inherit_view_id"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='salary']" position="inside">
+                  <label for="total_hours"/>
+                    <div class="o_row">
+
+                        <field name="total_hours" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+            </xpath>
+        </field>
+    </record> -->
 
 </odoo>

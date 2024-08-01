@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form view for Regulation -->
+    <record id="view_regulation_form" model="ir.ui.view">
+        <field name="name">regulations.form</field>
+        <field name="model">regulations</field>
+        <field name="arch" type="xml">
+            <form string="Regulation">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="hour_per_day" widget="float_time"/>
+                    </group>
+                    <notebook>
+                        <page string="Regulation Lines">
+                            <field name="regulations_id">
+                                <tree editable="bottom">
+                                   <field name="number" />
+                                    <!-- <field name="sign_in" widget="float_time" /> -->
+                                    <!-- <field name="sign_out" widget="float_time" /> -->
+                                    <field name="late_from" widget="float_time" />
+                                    <field name="late_to" widget="float_time" />
+                                    <field name="work_hours"  widget="float_time" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view for Regulation -->
+    <record id="view_regulation_tree" model="ir.ui.view">
+        <field name="name">regulations.tree</field>
+        <field name="model">regulations</field>
+        <field name="arch" type="xml">
+            <tree string="Regulation">
+                <field name="name"/>
+                <field name="hour_per_day" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view for Regulation Line -->
+    <record id="view_regulation_line_form" model="ir.ui.view">
+        <field name="name">regulations.line.form</field>
+        <field name="model">regulations.line</field>
+        <field name="arch" type="xml">
+            <form string="Regulation Line">
+                <sheet>
+                    <group>
+                        <field name="number" />
+                        <field name="regulation_id"/>
+                        <!-- <field name="sign_in"/> -->
+                        <!-- <field name="sign_out"/> -->
+                        <field name="late_from"/>
+                        <field name="late_to"/>
+                        <field name="work_hours" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view for Regulation Line -->
+    <record id="view_regulation_line_tree" model="ir.ui.view">
+        <field name="name">regulations.line.tree</field>
+        <field name="model">regulations.line</field>
+        <field name="arch" type="xml">
+            <tree string="Regulation Line">
+                <field name="regulation_id"/>
+                <field name="number" />
+                <!-- <field name="sign_in"/> -->
+                <!-- <field name="sign_out"/> -->
+                <field name="late_from"/>
+                <field name="late_to"/>
+                <field name="work_hours" widget="float_time" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Regulations -->
+    <record id="action_regulation" model="ir.actions.act_window">
+        <field name="name">Regulations</field>
+        <field name="res_model">regulations</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu item for the Regulations -->
+    <menuitem id="menu_regulation_root" name="Regulations" sequence="10"/>
+
+    <menuitem
+        id="menu_regulation"
+        name="Regulations"
+        parent="hr_attendance.menu_hr_attendance_root"
+        action="action_regulation"
+        sequence="20"/>
+</odoo>

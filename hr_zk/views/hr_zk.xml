@@ -16,18 +16,16 @@
             <xpath expr="//field[@name='employee_id']" position="after">
                 
                 <field name="code_employee" />
-                <field name="id_api" invisible="1"/>
-                <field name="date_day" />
+                <field name="state" widget="badge" decoration-success="state == 'auto' or state == 'done'" decoration-danger="state == 'manual'"/>
+                <!-- <field name="date_day" /> -->
 
 
             </xpath>
-<!--           <xpath expr="//field[@name='worked_hours']" position="after">-->
-<!--               <field name="over_time"  widget="float_time"/>-->
-<!--           </xpath>-->
+               <!-- <xpath expr="//field[@name='worked_hours']" position="after">
+                <field name="over_time"  widget="float_time"/>
+            </xpath> -->
         </field>
     </record>
 
- 
 
-  
 </odoo>

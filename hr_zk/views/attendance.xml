@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="hr_attendance_action_overview" model="ir.actions.act_window">
+        <record id="hr_attendance_action_overview" model="ir.actions.act_window">
         <field name="name">Get Attendances</field>
         <field name="res_model">attendance.get.data</field>
         <field name="view_mode">tree</field>
@@ -21,24 +21,38 @@
         <field name="model">attendance.get.data</field>
         <field name="arch" type="xml">
             <tree string="Employee attendances" edit="0" sample="1">
-                <field name="Attendance_id"/>
+                <field name="employee_id"/>
                 <field name="emp_code"/>
                 <field name="punch_time"/>
-                <field name="punch_state_display"/>
+                <!-- <field name="punch_state_display"/> -->
                 <field name="upload_time"/>
             </tree>
         </field>
     </record>
 
-    <menuitem
-    id="get_data_menu"
-    name="ZK"
-    parent="hr_attendance.menu_hr_attendance_root"
-    sequence="12"
-    action="hr_attendance_action_overview"
-    />
+    <record id="view_attendance_search" model="ir.ui.view">
+    <field name="name">hr.attendance.search</field>
+    <field name="model">attendance.get.data</field>
+    <field name="arch" type="xml">
+        <search string="Search Employee Attendances">
+            <field name="employee_id"/>
+            <field name="emp_code"/>
+     
+            <!-- <group expand="0" string="Group By">
+                <filter string="Employee" domain="[]" context="{'group_by':'employee_id'}"/>
+                <filter string="Date" domain="[]" context="{'group_by':'punch_time'}"/>
+            </group> -->
+        </search>
+    </field>
+</record>
 
-<!--    groups="hr_attendance.group_hr_attendance_manager"-->
+       <menuitem
+        id="get_data_menu"
+        name="ZK"
+        action="hr_attendance_action_overview"
+        parent="hr_attendance.menu_hr_attendance_root"
+        sequence="12"/>
+
 
    
 
