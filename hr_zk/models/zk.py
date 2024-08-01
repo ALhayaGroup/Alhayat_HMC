@@ -87,7 +87,7 @@ class Hr_Zk(models.Model):
                         vals = {
                             'id_api': int(data.Attendance_id),
                             'employee_id': emp.id,
-                            'pin': emp.code_employee,
+                            'code_employee': emp.pin,
                             'check_in': data.punch_time,
                             'date_day': data.punch_time.date(),
                         }
