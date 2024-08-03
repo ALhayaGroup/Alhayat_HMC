@@ -25,7 +25,8 @@ class AttendanceGetData(models.Model):
 
     def get_all_attendance_data(self, date_from, date_to):
         print(date_from)
-        url = (f"http://142.132.129.24:8080/att/api/firstInLastOutReport/?page_size=500000&start_date={date_from}&end_date={date_to}&departments=1%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44&areas=-1&groups=-1&employees=-1")
+        url = (f"http://142.132.129.24:8080/att/api/firstInLastOutReport/?page_size=49000&start_date={date_from}&end_date={date_to}&departments=40&areas=-1&groups=-1&employees=-1")
+        # url = (f"http://142.132.129.24:8080/att/api/firstInLastOutReport/?page_size=500000&start_date={date_from}&end_date={date_to}&departments=1%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44&areas=-1&groups=-1&employees=-1")
         headers = {
             'Authorization': 'Token f32eafa83433b8e0769025b4d879f074b943fe65',
         }
