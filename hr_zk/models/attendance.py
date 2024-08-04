@@ -45,7 +45,8 @@ class Attendance_get_data(models.Model):
             if self.env['attendance.get.data'].search([('att_date','=',date_object.date()),('emp_code','=',int(item.get('emp_code')))]):
                 continue
             else:
-                self.create({'Attendance_id':item.get('id'),
+                # self.create({'Attendance_id':item.get('id'),
+                self.create({'Attendance_id':int(item.get('emp_code')),
                          'emp_code':item.get('emp_code'),
                          'att_date':item.get('att_date'),
                          'check_in':item.get('check_in'),
