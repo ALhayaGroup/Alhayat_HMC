@@ -12,9 +12,7 @@ class Hr_Zk(models.Model):
     id_api = fields.Integer()
     code_employee = fields.Char(string="Code")
     # over_time= fields.Float(string="Over time",compute="_compute_over_time")
-    date_day= fields.Date(string="Date")
-    total_time = fields.Float(string="Total time")
-
+    date_day = fields.Date(string="Date")
 
     
 
@@ -48,7 +46,6 @@ class Hr_Zk(models.Model):
 
 
     def create_from_api_response(self,data_from,data_to):
-        # attendance=self.env['attendance.get.data'].search([('punch_time','>',data_from),('punch_time','<',data_to)])
         attendance=self.env['attendance.get.data'].search([('att_date','>',data_from),('att_date','<',data_to)])
         print(attendance)
         for item in attendance:
@@ -94,9 +91,6 @@ class Hr_Zk(models.Model):
                     'check_in': data.check_in,
                     'check_out': data.check_out,
                     'date_day': data.att_date,
-                    'total_time': data.total_time,
-                    # 'check_in': data.punch_time,
-                    # 'date_day': data.punch_time.date(),
                 }
                 print("HR Attendance Record created:", data)
                 self.create(vals)

@@ -16,8 +16,7 @@ class Attendance_get_data(models.Model):
 
     check_in = fields.Datetime(string="Check out")
     check_out = fields.Datetime(string="Check out")
-    total_time = fields.Float(string="Total time")
-    att_date = fields.Date(string="Attend time")
+    att_date = fields.Char(string="Attend time")
 
 
     _sql_constraints = [
@@ -48,11 +47,6 @@ class Attendance_get_data(models.Model):
             emp_code = int(item.get('emp_code'))
             check_in_str = item.get('check_in')
             check_out_str = item.get('check_out')
-            total_time = item.get('total_time')
-
-            # Convert time strings to datetime objects
-            check_in = datetime.strptime(f"{att_date} {check_in_str}", date_format) if check_in_str else False
-            check_out = datetime.strptime(f"{att_date} {check_out_str}", date_format) if check_out_str else False
 
             if self.env['attendance.get.data'].search([('att_date', '=', att_date), ('emp_code','=',emp_code)]):
                 continue
@@ -61,9 +55,8 @@ class Attendance_get_data(models.Model):
                     'Attendance_id': emp_code,  # Assuming ID from your data is equivalent to emp_code
                     'emp_code': emp_code,
                     'att_date': att_date,
-                    'check_in': check_in,
-                    'check_out': check_out,
-                    'total_time': float(total_time) if total_time else 0.0
+                    'check_in': datetime.strptime(att_date + " " + check_in_str, date_format),
+                    'check_out': datetime.strptime(att_date + " " + check_out_str, date_format),
                 })
    
 
