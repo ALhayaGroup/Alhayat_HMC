@@ -24,9 +24,8 @@
                 <field name="Attendance_id"/>
                 <field name="emp_code"/>
                 <field name="att_date"/>
-                <field name="check_in" widget="float_time"/>
-                <field name="check_out" widget="float_time"/>
-                <field name="total_time" widget="float_time"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
 <!--                <field name="punch_time"/>-->
 <!--                <field name="punch_state_display"/>-->
 <!--                <field name="upload_time"/>-->
