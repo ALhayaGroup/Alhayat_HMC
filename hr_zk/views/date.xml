@@ -16,8 +16,8 @@
                 
                 <footer>
                 
-                    <button name="get_all_api" type="object" class="btn-primary"  string="get attendance"   />
-                    <button name="get_all_att" type="object" class="btn-warning"  string="get all attendance"   />
+                    <button name="get_all_api" type="object" class="btn-primary"  string="get zk data"   />
+                    <button name="get_all_attendance" type="object" class="btn-primary"  string="get attendance"   />
                 </footer>
             </form>
         </field>
@@ -36,8 +36,9 @@
     <menuitem
         id="get_data_menuitem"
         name="Get Data"
-        action="action_get_data"
-
         parent="hr_attendance.menu_hr_attendance_root"
-        sequence="20"/>
+        sequence="13"
+        action="action_get_data"
+    />
+
 </odoo>

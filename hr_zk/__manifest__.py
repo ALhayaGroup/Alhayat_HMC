@@ -3,7 +3,7 @@
 
 
 {
-    'name': 'ZK Attendance',
+    'name': 'ZK',
     'version': '2.0',
     'category': 'Human Resources/Attendances',
     # 'sequence': 240,
@@ -18,16 +18,11 @@ actions(Check in/Check out) performed by them.
     'website': 'https://www.odoo.com/app/employees',
     'depends': ['base','hr', 'hr_attendance','om_hr_payroll'],
     'data': [
+        'security/ir.model.access.csv',
         'views/date.xml',
         'views/hr_zk.xml',
         'views/payrol.xml',
         'views/attendance.xml',
-        'views/penalties_views.xml',
-        'views/contract_zk.xml',
-        'data/employee_one.xml',
-        'views/paymounth.xml',
-        'security/ir.model.access.csv',
-        
         
       
     

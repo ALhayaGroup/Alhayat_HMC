@@ -24,7 +24,7 @@ class Hr_Zk(models.Model):
         print(attendance)
         for item in attendance:
             
-            employees = self.env['hr.employee'].search([('code_employee', '=', item.emp_code)])
+            employees = self.env['hr.employee'].search([('pin', '=', item.emp_code)])
             if employees:
                 print(employees)
             #    self.create_record(it)
