@@ -41,13 +41,14 @@ class Attendance_get_data(models.Model):
 
         for item in get_data:
             date_format = "%Y-%m-%d %H:%M:%S"
-            date_object = datetime.strptime(item.get('att_date'), date_format)
+            # date_object = datetime.strptime(item.get('att_date'), date_format)
+            date_object = item.get('att_date')
             if self.env['attendance.get.data'].search([('att_date','=',date_object.date()),('emp_code','=',int(item.get('emp_code')))]):
                 continue
             else:
                 # self.create({'Attendance_id':item.get('id'),
                 self.create({'Attendance_id':int(item.get('emp_code')),
-                         'emp_code':item.get('emp_code'),
+                         'emp_code':int(item.get('emp_code')),
                          'att_date':item.get('att_date'),
                          'check_in':item.get('check_in'),
                          'check_out':item.get('check_out'),
