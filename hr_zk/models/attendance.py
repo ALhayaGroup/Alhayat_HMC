@@ -50,9 +50,9 @@ class Attendance_get_data(models.Model):
                 self.create({'Attendance_id':int(item.get('emp_code')),
                          'emp_code':int(item.get('emp_code')),
                          'att_date':item.get('att_date'),
-                         'check_in':item.get('check_in'),
-                         'check_out':item.get('check_out'),
-                         'total_time':item.get('total_time')})
+                         'check_in':float(item.get('check_in')),
+                         'check_out':float(item.get('check_out')),
+                         'total_time':float(item.get('total_time'))})
                          # 'punch_time':item.get('punch_time'),
                          # 'punch_state_display':item.get('punch_state_display'),
                          # 'upload_time':item.get('upload_time')})
