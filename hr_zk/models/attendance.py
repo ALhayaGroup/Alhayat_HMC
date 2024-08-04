@@ -14,8 +14,8 @@ class Attendance_get_data(models.Model):
     punch_state_display=fields.Char(string="status")
     upload_time = fields.Date(string="upload time")
 
-    check_in = fields.Datetime(string="Check out")
-    check_out = fields.Datetime(string="Check out")
+    check_in = fields.Char(string="Check out")
+    check_out = fields.Char(string="Check out")
     att_date = fields.Char(string="Attend time")
 
 
@@ -42,7 +42,6 @@ class Attendance_get_data(models.Model):
 
         for item in get_data:
             # Date and time formatting
-            date_format = "%Y-%m-%d %H:%M:%S"
             att_date = item.get('att_date')
             emp_code = int(item.get('emp_code'))
             check_in_str = item.get('check_in')
@@ -55,8 +54,8 @@ class Attendance_get_data(models.Model):
                     'Attendance_id': emp_code,  # Assuming ID from your data is equivalent to emp_code
                     'emp_code': emp_code,
                     'att_date': att_date,
-                    'check_in': datetime.strptime(att_date + " " + check_in_str, date_format),
-                    'check_out': datetime.strptime(att_date + " " + check_out_str, date_format),
+                    'check_in': att_date + " " + check_in_str,
+                    'check_out': att_date + " " + check_out_str,
                 })
    
 

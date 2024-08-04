@@ -84,12 +84,13 @@ class Hr_Zk(models.Model):
                 #     # print("0" * 50)
                 #     continue
                 # else:
+                date_format = "%Y-%m-%d %H:%M:%S"
                 vals = {
                     'id_api': int(data.Attendance_id),
                     'employee_id': emp.id,
                     'code_employee': emp.pin,
-                    'check_in': data.check_in,
-                    'check_out': data.check_out,
+                    'check_in': datetime.strptime(data.check_in, date_format),
+                    'check_out': datetime.strptime(data.check_out, date_format),
                     'date_day': data.att_date,
                 }
                 print("HR Attendance Record created:", data)
