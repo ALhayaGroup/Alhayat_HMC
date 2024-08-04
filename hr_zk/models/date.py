@@ -3,8 +3,8 @@ import requests
 
 class Attendance_get_data(models.TransientModel):
     _name = "get.data"
-    date_from = fields.Datetime("date from",required=True)
-    date_to = fields.Datetime("date to",required=True)
+    date_from = fields.Date("date from",required=True)
+    date_to = fields.Date("date to",required=True)
 
     days_in_month = fields.Integer("days_in_month",required=True,default=26)
 
