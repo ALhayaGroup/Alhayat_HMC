@@ -14,9 +14,9 @@ class Attendance_get_data(models.Model):
     punch_state_display=fields.Char(string="status")
     upload_time = fields.Date(string="upload time")
 
-    check_in = fields.Char(string="Check in")
-    check_out = fields.Char(string="Check out")
-    total_time = fields.Char(string="Total time")
+    check_in = fields.Datetime(string="Check out")
+    check_out = fields.Datetime(string="Check out")
+    total_time = fields.Float(string="Total time")
     att_date = fields.Date(string="Attend time")
 
 
@@ -42,20 +42,29 @@ class Attendance_get_data(models.Model):
         # get_data = get_response['data']
 
         for item in get_data:
+            # Date and time formatting
             date_format = "%Y-%m-%d %H:%M:%S"
-            if self.env['attendance.get.data'].search([('att_date', '=', item.get('att_date')), ('emp_code','=',int(item.get('emp_code')))]):
+            att_date = item.get('att_date')
+            emp_code = int(item.get('emp_code'))
+            check_in_str = item.get('check_in')
+            check_out_str = item.get('check_out')
+            total_time = item.get('total_time')
+
+            # Convert time strings to datetime objects
+            check_in = datetime.strptime(f"{att_date} {check_in_str}", date_format) if check_in_str else False
+            check_out = datetime.strptime(f"{att_date} {check_out_str}", date_format) if check_out_str else False
+
+            if self.env['attendance.get.data'].search([('att_date', '=', att_date), ('emp_code','=',emp_code)]):
                 continue
             else:
-                # self.create({'Attendance_id':item.get('id'),
-                self.create({'Attendance_id':int(item.get('emp_code')),
-                         'emp_code':int(item.get('emp_code')),
-                         'att_date':item.get('att_date'),
-                         'check_in':item.get('check_in'),
-                         'check_out':item.get('check_out'),
-                         'total_time':item.get('total_time')})
-                         # 'punch_time':item.get('punch_time'),
-                         # 'punch_state_display':item.get('punch_state_display'),
-                         # 'upload_time':item.get('upload_time')})
+                self.create({
+                    'Attendance_id': emp_code,  # Assuming ID from your data is equivalent to emp_code
+                    'emp_code': emp_code,
+                    'att_date': att_date,
+                    'check_in': check_in,
+                    'check_out': check_out,
+                    'total_time': float(total_time) if total_time else 0.0
+                })
    
 
 

@@ -13,7 +13,7 @@ class Hr_Zk(models.Model):
     code_employee = fields.Char(string="Code")
     # over_time= fields.Float(string="Over time",compute="_compute_over_time")
     date_day= fields.Date(string="Date")
-    total_time = fields.Char(string="Total time")
+    total_time = fields.Float(string="Total time")
 
 
     
@@ -91,10 +91,10 @@ class Hr_Zk(models.Model):
                     'id_api': int(data.Attendance_id),
                     'employee_id': emp.id,
                     'code_employee': emp.pin,
-                    'check_in': datetime.strptime(f"{data.att_date} {data.check_in}", "%Y-%m-%d %H:%M:%S"),
-                    'check_out': datetime.strptime(f"{data.att_date} {data.check_out}", "%Y-%m-%d %H:%M:%S"),
-                    'date_day': data.att_date(),
-                    'total_time': data.total_time(),
+                    'check_in': data.check_in,
+                    'check_out': data.check_out,
+                    'date_day': data.att_date,
+                    'total_time': data.total_time,
                     # 'check_in': data.punch_time,
                     # 'date_day': data.punch_time.date(),
                 }
