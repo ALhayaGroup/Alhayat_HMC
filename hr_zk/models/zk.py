@@ -13,7 +13,7 @@ class Hr_Zk(models.Model):
     code_employee = fields.Char(string="Code")
     # over_time= fields.Float(string="Over time",compute="_compute_over_time")
     date_day= fields.Date(string="Date")
-    total_time = fields.Float(string="Total time")
+    total_time = fields.Char(string="Total time")
 
 
     
