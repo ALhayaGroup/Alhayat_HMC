@@ -26,7 +26,7 @@ class Attendance_get_data(models.Model):
     
     def get_attendance_data(self,date_from,date_to):
         # url = f"http://10.1.1.150:8082/iclock/api/transactions/?start_time={date_from}&end_time={date_to}&page_size=49000"
-        url = f"http://142.132.129.24:8080/att/api/firstInLastOutReport/?page=1&page_size=80000&start_date={date_from}&end_date={date_to}&departments=1,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44&areas=-1&groups=-1&employees=-1"
+        url = f"http://142.132.129.24:8080/att/api/firstInLastOutReport/?page=1&page_size=20000&start_date={date_from}&end_date={date_to}&departments=1,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44&areas=-1&groups=-1&employees=-1"
         headers = {
             'Authorization': 'Token f32eafa83433b8e0769025b4d879f074b943fe65',
             
