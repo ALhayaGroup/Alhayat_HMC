@@ -86,8 +86,8 @@ class Hr_Zk(models.Model):
                     'id_api': int(data.Attendance_id),
                     'employee_id': emp.id,
                     'code_employee': emp.pin,
-                    'check_in': datetime.strptime(f"{data.att_date} {data.check_in_str}", date_format),
-                    'check_out': datetime.strptime(f"{data.att_date} {data.check_out_str}", date_format),
+                    'check_in': datetime.strptime(f"{data.att_date} {data.check_in}", date_format),
+                    'check_out': datetime.strptime(f"{data.att_date} {data.check_out}", date_format),
                     'date_day': data.att_date,
                 }
                 print("HR Attendance Record created:", data)
