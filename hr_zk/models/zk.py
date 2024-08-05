@@ -16,9 +16,9 @@ class Hr_Zk(models.Model):
 
     
 
-    _sql_constraints = [
-        ('unique_id_api', 'unique(id_api)', 'ID API must be unique!'),
-    ]
+    # _sql_constraints = [
+    #     ('unique_id_api', 'unique(id_api)', 'ID API must be unique!'),
+    # ]
     # @api.depends('check_in','check_out')
     # def _compute_over_time(self):
     # #    employee = self.env['hr.employee'].search([('code_employee','=',self.code_employee)])
