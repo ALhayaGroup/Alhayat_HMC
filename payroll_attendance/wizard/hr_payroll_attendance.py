@@ -24,38 +24,19 @@ class PayrollAttendanceWizard(models.TransientModel):
         att_payroll = self.env['payroll.attendance.line']
         hr_attendance_ids = self.env['hr.attendance'].search([('payroll_attendance_id', '=', False), ('check_in', '>=', date_time)])
         for rec in hr_attendance_ids:
-          
-            while date_time <= datetime.today():
-                print("111111111111111111111111111111111", rec)
-                if not rec.payroll_attendance_id:
-                    print("222222222222222222222222222222222222222")
-                    vals = self.prepare_payroll_attendance(rec,date_time)
-                    line = att_payroll.create(vals)
-                    new_check_in = date_time + timedelta(hours=rec.check_in.hour,minutes=rec.check_in.minute, seconds=rec.check_in.second)
-                    att_line = self.env['hr.attendance'].search([('employee_id','=', line.employee_id.id), ('check_in', '=', new_check_in)],limit=1)
-                    print("========================================================")
-                    if att_line:
-                        check_in,check_out = self.get_check_time(att_line)
-                        work_time = check_out - check_in
-                        print("check_in********-------------*********", check_in)
-                        line.update({'time_in': check_in, #must be replace with time zone,
-                                     'time_out': check_out,
-                                     'work_time': work_time,
-                                     'attendance_line_ids': [(6, 0, att_line.ids)],
-                                     })
-                    self.get_status(line,date_time.strftime('%a'))
-                    att_line.update({'payroll_attendance_id': line })
-                date_time = date_time + timedelta(days=1)
+            if not rec.payroll_attendance_id:
+                vals = self.prepare_payroll_attendance(rec,date_time)
+                line = att_payroll.create(vals)
+                self.get_status(line,date_time.strftime('%a'))
+            rec.update({'payroll_attendance_id': line })
+            date_time = date_time + timedelta(days=1)
             date_time = datetime.combine(self.date_from,datetime.min.time())
 
 
 
     def get_check_time(self,att_line):
-        _logger.info("-------------------%s",att_line.check_in)
         time_in_tz = self._get_timezone(str(att_line.check_in),3)
-        _logger.info("-=-=-=-=-=-=-=-=-=-=-=-=-=-11111111111111111")
         time_out_tz = self._get_timezone(str(att_line.check_out),3)
-        _logger.info("-=-=-=-=-=-=-=-=-=-=-=-=-=-=2222222222222222")
         new_time_in = time_in_tz.time().strftime('%H:%M')
         new_time_out = time_out_tz.time().strftime('%H:%M')
         time_in = new_time_in.replace(':','.')
@@ -65,11 +46,17 @@ class PayrollAttendanceWizard(models.TransientModel):
 
 
     def prepare_payroll_attendance(self,rec,date_time):
+        check_in,check_out = self.get_check_time(rec)
+        work_time = check_out - check_in
         vals = {
                 'employee_id': rec.employee_id.id,
                 'shift_id': rec.employee_id.shift_id.id,
                 'day': date_time.strftime('%A'),
                 'date': date_time,
+                'time_in': check_in, #must be replace with time zone,
+                'time_out': check_out,
+                'work_time': work_time,
+                'attendance_line_ids': [(6, 0, rec.ids)],
                  }
         return vals
 
