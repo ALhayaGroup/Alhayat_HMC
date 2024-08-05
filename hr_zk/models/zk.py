@@ -55,10 +55,6 @@ class Hr_Zk(models.Model):
                 self.create_record(item)
 
     def create_record(self, data):
-        
-     
-    
-
         # if data.punch_state_display == 'Sign In':
         employees = self.env['hr.employee'].search([('pin', '=', data.emp_code)])
         employee_count = employees.search_count([])
@@ -85,12 +81,13 @@ class Hr_Zk(models.Model):
                 #     continue
                 # else:
                 date_format = "%Y-%m-%d %H:%M:%S"
+                print("======data===========", data)
                 vals = {
                     'id_api': int(data.Attendance_id),
                     'employee_id': emp.id,
                     'code_employee': emp.pin,
-                    'check_in': datetime.strptime(data.check_in, date_format),
-                    'check_out': datetime.strptime(data.check_out, date_format),
+                    'check_in': datetime.strptime(f"{data.att_date} {data.check_in_str}", date_format),
+                    'check_out': datetime.strptime(f"{data.att_date} {data.check_out_str}", date_format),
                     'date_day': data.att_date,
                 }
                 print("HR Attendance Record created:", data)

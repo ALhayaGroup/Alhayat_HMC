@@ -54,8 +54,8 @@ class Attendance_get_data(models.Model):
                     'Attendance_id': emp_code,  # Assuming ID from your data is equivalent to emp_code
                     'emp_code': emp_code,
                     'att_date': att_date,
-                    'check_in': f"{att_date} {check_in_str}",
-                    'check_out': f"{att_date} {check_out_str}",
+                    'check_in': check_in_str,
+                    'check_out': check_out_str,
                 })
    
 
