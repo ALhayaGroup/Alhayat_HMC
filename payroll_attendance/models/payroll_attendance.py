@@ -16,7 +16,9 @@ class PayrollAttendanceLine(models.Model):
                          ('3_late', "Late more than 1H"),
                          ('1_early', "Early out 0:15 to 0:30"),
                          ('absent', "Absent"),
-                         ('leave', "Leave")]
+                         ('leave', "Leave"),
+                         ('off', 'OFF'),
+                         ('normal', 'Normal')]
 
     employee_id = fields.Many2one("hr.employee", string="Employee", required=True)
     shift_id = fields.Many2one("shift.shift", string="Shift")

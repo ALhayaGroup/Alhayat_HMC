@@ -15,13 +15,14 @@
         # 'security/hr_payroll_security.xml',
         'security/ir.model.access.csv',
         'data/sequence.xml',
-        
         'views/shift_shift_views.xml',
         'wizard/hr_payroll_attendance_views.xml',
         'views/hr_policy_views.xml',
         'views/hr_employee_views.xml',
         'views/hr_leave_type_view.xml',
         'views/payroll_atendance_view.xml',
+        'views/hr_payslip_view.xml',
+        'views/hr_attendance.xml',
     ],
     'application': True,
 }

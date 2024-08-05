@@ -6,3 +6,4 @@ from . import shift_shift
 from . import payroll_attendance
 from . import hr_policy
 from . import hr_attendance
+from . import hr_payslip

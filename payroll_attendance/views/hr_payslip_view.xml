@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payroll_attendance_payslip_form_view" model="ir.ui.view">
+        <field name="name">payroll.attendance.payslip.form.view</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='compute_sheet']" position="after">
+                <button string="Compute Attendance" name="compute_employee_attendance" type="object" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,48 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Root Menus -->
-
-
-    <!-- <record id="shift_shift_form" model="ir.ui.view">
-            <field name="name">shift.shift.form</field>
-            <field name="model">shift.shift</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                            <field name="shift_name"/>
-                        </group>
-                        <group>
-                            <group>
-                                <field name="shift_start" widget='float_time' />
-                                <field name="shift_end" widget='float_time' />
-                                <field name="shift_work_time" widget='float_time' />
-                            </group>
-                            <group>
-                                <field name="late_in" widget='float_time' />
-                                <field name="early_out" widget='float_time' />
-                                <field name="Over_time_start" widget='float_time' />
-                            </group>
-                        </group>
-                        <group string="Days">
-                            <group>
-                               <field name="sat"/>
-                               <field name="sun"/>
-                               <field name="mon"/>
-                               <field name="tue"/>
-                            </group>
-                            <group>
-                                <field name="wed"/>
-                                <field name="thur"/>
-                                <field name="fri"/>
-                           </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
- -->
 
     <record id="payroll_attendance_line_view_tree" model="ir.ui.view">
         <field name="name">hr.payroll.attendance.line.tree</field>
@@ -54,9 +11,12 @@
                 </header>
                 <field name="employee_id"/>
                 <field name="shift_id"/>
-               <!--  <field name="shift_start"/>
-                <field name="shift_end"/>
-                <field name="shift_work_time"/> -->
+                <field name="date"/>
+                <field name="day"/>
+                <field name="time_in"/>
+                <field name="time_out"/>
+                <field name="work_time"/>
+                <field name="status"/>
             </tree>
         </field>
     </record>
