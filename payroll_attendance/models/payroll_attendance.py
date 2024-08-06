@@ -25,7 +25,7 @@ class PayrollAttendanceLine(models.Model):
     day = fields.Selection(WEEK_DAYS, string="Days")
     date = fields.Date(string="Date")
     time_in = fields.Float(string="Time In")
-    time_out = fields.Float(string="Time Out")
+    time_out = fields.Float(string="Time Out ")
     work_time = fields.Float(string="Work time")
     over_time = fields.Float(string="Over time")
     status = fields.Selection(ATTENDANCE_STATUS,string="Status")
