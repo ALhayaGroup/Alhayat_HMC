@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_get_data_form" model="ir.ui.view">
+        <field name="name">get.data.form</field>
+        <field name="model">get.data</field>
+        <field name="arch" type="xml">
+            <form string="Get Data">
+            
+                <group>
+                    <field name="date_from"/>
+                    
+                </group>
+                <group >
+                    <field name="date_to"/>
+                    <field name="days_in_month"/>
+                </group>`
+                
+                <footer>
+                
+                    <button name="get_all_api" type="object" class="btn-primary"  string="get zk data"   />
+                    <button name="get_all_attendance" type="object" class="btn-primary"  string="get attendance"   />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_get_data" model="ir.actions.act_window">
+        <field name="name">Get Data</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">get.data</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_get_data_form"/>
+        <field name="target">new</field>
+      
+    </record>
+
+    <menuitem
+        id="get_data_menuitem"
+        name="Get Data"
+        parent="hr_attendance.menu_hr_attendance_root"
+        sequence="13"
+        action="action_get_data"
+    />
+
+</odoo>
