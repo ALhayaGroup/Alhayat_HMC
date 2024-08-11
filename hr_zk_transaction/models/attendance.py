@@ -35,15 +35,15 @@ class Attendance_get_data(models.Model):
         for item in get_data:
             date_format = "%Y-%m-%d %H:%M:%S"
             date_object = datetime.strptime(item.get('upload_time'), date_format)
-            if self.env['attendance.get.data'].search([('upload_time','=',date_object.date()),('emp_code','=',int(item.get('emp_code')))]):
-                continue
-            else:
-                self.create({'Attendance_id':item.get('id'),
-                         'emp_code':item.get('emp_code'),
-                         'punch_time':item.get('punch_time'),
-                         'punch_state_display':item.get('punch_state_display'),
-                         'upload_time':item.get('upload_time')})
-   
+            # if self.env['attendance.get.data'].search([('upload_time','=',date_object.date()),('emp_code','=',int(item.get('emp_code')))]):
+            #     continue
+            # else:
+            self.create({'Attendance_id':item.get('id'),
+                     'emp_code':item.get('emp_code'),
+                     'punch_time':item.get('punch_time'),
+                     'punch_state_display':item.get('punch_state_display'),
+                     'upload_time':item.get('upload_time')})
+
 
 
 
